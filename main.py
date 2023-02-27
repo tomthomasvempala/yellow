@@ -47,7 +47,7 @@ if value ==0:
     exit()
 if value<=10:
     print("NORMAL")
-elif value<=50:
+elif value<=20:
     print("LOW")
 else:
     print("HIGH")
