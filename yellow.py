@@ -52,21 +52,30 @@ def yellow_content(im,x,y):
     yellow= (yellow_intensity(rgb[0],rgb[1],rgb[2]))
     return yellow*100
 
-def average_yellow(img_name):
+def average_yellow(img_name, marks = False):
     sum =0
     count = 0
     im = Image.open(r""+img_name)
     x = im.width
     y = im.height
     for i in range(0,x,5):
-        for j in range(0,y,5):
+        for j in range(0,y,5):  
             x = yellow_content(im,i,j)
             if x==-1:
                 continue
+            if marks:
+                for p in range(i-1, i+2):  
+                    for q in range(j-1, j+2):
+                        if not (p==i and q==j):
+                            im.putpixel((p, q), (255, 0, 0))
             sum=sum+x
             count=count+1
+    if marks:
+        im.save("workspace/marks.png")
     if count == 0:
         print("No skin found")
         return 0
     avg = sum/count
+    if marks:
+        print("Pixels considered: "+ str(count))
     return avg

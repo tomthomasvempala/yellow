@@ -42,7 +42,7 @@ mask_skin(wk+'cam.png',wk+"input_image.png")
 
 print("\n\nCurrent sample is:")
 
-value = average_yellow(wk+"input_image.png")
+value = average_yellow(wk+"input_image.png",True)
 if value ==0:
     exit()
 if value<=10:
